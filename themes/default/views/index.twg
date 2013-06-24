@@ -1,2 +1,25 @@
+<div class="splash" ng-class="{'logo': !telephone}">
 
-    {% widgets 'main-page' %}
+    <form class="form login-form" ng-hide="telephone">
+        <div class="bz-form-row">
+            <label >Телефон:</label>
+            <input type="text" />
+        </div>
+
+        <div class="bz-form-row">
+            <label>Пароль:</label>
+            <input type="text" />
+        </div>
+
+        <div class="actions btn-enter">
+            <button class="btn" ng-click="telephone = !!!telephone">Войти</button>
+        </div>
+    </form>
+
+    <div class="span12 main-part ng-cloak" ng-show="telephone">
+        <div class="sidebar">
+            <div class="clearfix"></div>
+            {% widgets 'shops' %}
+        </div>
+    </div>
+</div>
