@@ -89,7 +89,7 @@ class Guest extends User
     /**
      * Повертає чи встановлює налаштування гостя
      */
-    public function setting($name, $value = null, $default = null)
+    public function setting($settingName, $value = null, $default = null)
     {
         $session = new Session('guestSetting');
         if ($value !== null) {

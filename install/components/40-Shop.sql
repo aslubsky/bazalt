@@ -314,6 +314,14 @@ CREATE TABLE IF NOT EXISTS `com_shop_product_types_locale` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+DROP TABLE IF EXISTS `com_shop_shops`;
+CREATE TABLE IF NOT EXISTS `com_shop_wish_lists` (
+	`user_id` INT(10) UNSIGNED NOT NULL,
+	`shop_id` INT(10) UNSIGNED NOT NULL,
+	`product_id` INT(10) UNSIGNED NOT NULL,
+	`created` DATETIME NOT NULL,
+	PRIMARY KEY (`user_id`, `shop_id`, `product_id`)
+) ENGINE=InnoDB;
 
 
 -- Dumping structure for table bazalt_cms.com_shop_shops

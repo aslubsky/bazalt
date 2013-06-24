@@ -9,6 +9,8 @@ use Framework\CMS as CMS,
 
 class Product extends Base\Product
 {
+    private static $_curWishList = null;
+
     public static function create($shop = null)
     {
         $product = new Product();
@@ -441,5 +443,21 @@ class Product extends Base\Product
             ->andWhere('a.site_id = ?', $siteId);
 
         return $q->exec();
+    }
+
+    public function inCurrentWishList($type = WishList::TYPE_WISH)
+    {
+        if(self::$_curWishList === null) {
+            self::$_curWishList = array();
+            $user = CMS\User::get();
+            //@todo check is guest
+            $user = CMS\Model\User::getById(1);
+            $listItems = WishList::getForUser($user, $type);
+            foreach($listItems as $listItem) {
+                self::$_curWishList []= $listItem->type .'_' . $listItem->product_id;
+            }
+//            print_r(self::$_curWishList);exit($type .'_' . $this->id);
+        }
+        return in_array($type .'_' . $this->id, self::$_curWishList);
     }
 }

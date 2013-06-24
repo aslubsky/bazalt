@@ -38,6 +38,7 @@ abstract class Product extends \Framework\CMS\ORM\Record
     public function initRelations()
     {
         $this->hasRelation('Brand', new \Bazalt\ORM\Relation\One2One('Components\Shop\Model\Brand', 'brand_id',  'id'));
+        $this->hasRelation('Shop', new \Bazalt\ORM\Relation\One2One('Components\Shop\Model\Shop', 'shop_id',  'id'));
         $this->hasRelation('ProductType', new \Bazalt\ORM\Relation\One2One('Components\Shop\Model\ProductType', 'type_id',  'id'));
         $this->hasRelation('User', new \Bazalt\ORM\Relation\One2One('Framework\CMS\Model\User', 'user_id',  'id'));
         $this->hasRelation('Variants', new \Bazalt\ORM\Relation\One2Many('Components\Shop\Model\ProductsVariants', 'id', 'product_id'));

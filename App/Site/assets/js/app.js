@@ -69,7 +69,46 @@ define('site', [].concat(modules), function() {
        });
     }]);
 
-    angular.bootstrap(document.documentElement, ['main']);
 
+    app.factory('WishListsResource', ['$resource', '$q', function ($resource, $q) {
+        return $resource('/rest.php/wish-lists', {}, {});
+    }]);
+
+    app.controller('ProductCtrl', function($scope, WishListsResource) {
+        $scope.wishList = function(productId, inList) {
+            if(typeof (Android) != "undefined") {
+                Android.playSound('sounds/wow.mp3');
+                if(inList) {
+                    Android.showToast('Удалено из закладок');
+                } else {
+                    Android.showToast('Добавлено в закладки');
+                }
+            }
+
+            if(inList) {
+                WishListsResource.delete({
+                    'product_id': productId
+                }, {}, function(res) {
+                    $('p.b-like span').text(' +'+res.count);
+                    console.log(res);
+                    //$scope.article.comments.push(res);
+                });
+                $scope.inList = false;
+            } else {
+                var listItm = new WishListsResource({
+                    'product_id': productId
+                });
+                listItm.$save(function(res) {
+                    $('p.b-like span').text(' +'+res.count);
+                    console.log(res);
+                    //$scope.article.comments.push(res);
+                });
+                $scope.inList = true;
+            }
+        }
+        return false;
+    });
+
+    angular.bootstrap(document.documentElement, ['main']);
     return app;
 });
