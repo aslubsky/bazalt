@@ -1,0 +1,82 @@
+{% extends 'master.layout.twg' %}
+{% block head %}
+{% endblock head %}
+{% block body %}
+
+
+<div id="wrapper">
+    <div class="b-header navbar navbar-inverse">
+        <div class="navbar-inner">
+            <a class="brand" href="/">Bazalt errors</a>
+
+            <div class="right-menu">
+                {% widgets 'top-menu' %}
+                {% if not curUser.isGuest() %}
+                <a class="pull-right" ng-click="$user.logout()" href="/"><i class="icon-off"></i> Logout</a>
+                <div id="hosts-filter" class="pull-right span4 select-host">
+                    <label for="hosts-select" class="control-label">Select host</label>
+                    <select id="hosts-select">
+                        <option value="-"> -</option>
+                        {% for host in hosts %}
+                            <option {% if curHost and curHost.id == host.id %}selected="selected"{% endif %}
+                                    value="{{ host.id }}">{{ host.host }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% endif %}
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <!--sidebar-->
+    <div id="sidebar-nav" class="hidden-phone">
+        {% widgets 'sidebar-menu' %}
+    </div>
+    <!--sidebar-->
+
+    <!-- main container -->
+    <div class="content">
+        <div class="container-fluid">
+            <div id="main-stats">
+                <div class="row-fluid stats-row">
+                    <div class="span3 stat">
+                        <div class="data">
+                            <span class="number">{{ todayErrorsCount }}</span>
+                            error
+                        </div>
+                        <span class="date">Today</span>
+                    </div>
+                    <div class="span3 stat">
+                        <div class="data">
+                            <span class="number">{{ errorsCount }}</span>
+                            error
+                        </div>
+                        <span class="date">For all time</span>
+                    </div>
+                    <div class="span3 stat">
+                        <div class="data">
+                            <span class="number">{{ hostsCount }}</span>
+                            hosts
+                        </div>
+                        <span class="date">For all time</span>
+                    </div>
+                </div>
+            </div>
+            <div id="ng-view" data-ng-view ng-animate="{enter: 'view-enter'}">
+                {{content|raw}}
+            </div>
+        </div>
+    </div>
+    <!-- /main container -->
+
+</div>
+
+<footer>
+    <p class="pull-right">&copy; <a href="http://equalteam.net/">Equalteam</a> 2013</p>
+</footer>
+
+
+
+
+{% endblock body %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><html class="no-js"><!--<![endif]-->
+<head>
+    <meta name="keywords" content="{{ _meta.keywords }}">
+    <meta name="description" content="{{ _meta.description }}">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="{{ themeUrl }}/assets/less/theme.less.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ themeUrl }}/assets/css/elements.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ themeUrl }}/assets/css/bootstrap-overrides.css"/>
+    <link rel="stylesheet" type="text/css" href="/App/Admin/assets/css/daterangepicker.css" media="all">
+
+    <script data-main="site" src="/assets/require.js"></script>
+    {% block head '' %}
+</head>
+<body>
+    {% block body '' %}
+    <script data-main="/App/Admin/assets/js/date.js" src="/App/Admin/assets/js/date.js"></script>
+    <script data-main="/App/Admin/assets/js/daterangepicker.js" src="/App/Admin/assets/js/daterangepicker.js"></script>
+</body>
+</html>

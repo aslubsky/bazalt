@@ -1,0 +1,319 @@
+@import 'bazalt/core.less';
+
+body {
+  background: #F7F7F7;
+  position: relative;
+  margin: 0px;
+  font-size: 12px !important;
+  padding: 0px;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  line-height: normal;
+  color: #29323d;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small {
+  margin-left: 15px;
+  font-style: italic;
+}
+
+label, table tr th, table tr td {
+    font-size: 12px;
+}
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"] {
+    min-height: 30px;
+    line-height: 30px;
+    font-size: 12px !important;
+}
+.input-append, .input-prepend {
+    width: 100%;
+}
+.input-append input {
+    display: inline-block;
+    width: 150px;
+}
+.input-append [class*="column"] + [class*="column"]:last-child {
+    float: none;
+}
+
+/*header*/
+.b-header {
+  .navbar-inner {
+    .brand {
+      background: url("../images/bazalt/logo.png") no-repeat 0 6px transparent;
+      color: #fff;
+      height: 25px;
+      padding-left: 34px;
+      margin-left: 0;
+    }
+    .right-menu {
+      .nav {
+        li {
+          a {
+            text-shadow: none;
+          }
+        }
+      }
+      .select-host {
+        padding-top: 12px;
+        width: 300px;
+        label {
+          float: left;
+          width: 80px;
+          color: #D6D6D6;
+        }
+        select {
+          float: left;
+          width: 205px;
+        }
+      }
+    }
+  }
+}
+/*header*/
+
+/*login-form*/
+.login-form {
+
+  form {
+    a {
+      &.forgot-pass {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+/*login-form*/
+
+/*footer*/
+footer {
+  border-top: none !important;
+  clear: both;
+  height: 45px;
+  margin-top: -70px !important;
+  position: relative;
+  width: 100%;
+  padding: 0 20px;
+}
+/*footer*/
+
+
+/* Sidebar */
+#sidebar-nav {
+  position: absolute;
+  width: 180px;
+  float: left;
+  margin: 0em;
+  padding-top: 5.8em;
+}
+
+#sidebar-nav #dashboard-menu {
+  list-style: none;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+#sidebar-nav #dashboard-menu > li > a {
+  border-bottom: 1px solid #DAE1E8;
+  box-shadow: 0 2px 1px -1px #FFFFFF;
+  color: #7F8C9A;
+  display: block;
+  margin-bottom: 5px;
+  margin-left: -15px;
+  margin-right: 0;
+  padding: 19px 30px 15px;
+  width: 118%;
+}
+#sidebar-nav #dashboard-menu > li > a:hover {
+  background: transparent !important;
+}
+
+#sidebar-nav #dashboard-menu > li.active {
+  &:before, &:after {
+    border-bottom: 12px solid #F7F7F7;
+    border-right: 12px solid #F7F7F7;
+    border-top: 12px solid #F7F7F7;
+    content: " ";
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 0;
+    z-index: 2;
+  }
+  &:after {
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid white;
+    border-top: 12px solid transparent;
+    height: 0;
+    position: absolute;
+    right: -13px;
+    top: 15px;
+    width: 0;
+    z-index: 2;
+  }
+}
+
+#sidebar-nav #dashboard-menu .pointer {
+  position: absolute;
+  right: 9px;
+  top: 37%;
+}
+
+#sidebar-nav #dashboard-menu .pointer .arrow,
+#sidebar-nav #dashboard-menu .pointer .arrow_border {
+  border-color: transparent #fff transparent transparent
+;
+  border-width: 11px;
+  border-style: solid;
+  font-size: 0;
+  left: 50%;
+  line-height: 0;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  width: 0;
+  z-index: 1002;
+  left: 0;
+  margin-left: 45%;
+}
+
+#sidebar-nav #dashboard-menu .pointer .arrow_border {
+  border-color: transparent #c0d2dd transparent transparent
+;
+  border-width: 11px;
+  margin-left: -1px;
+  border-style: solid;
+  z-index: 1001;
+  top: 0px;
+}
+
+#sidebar-nav #dashboard-menu a span {
+  margin-left: 35px;
+  transition: color .1s linear;
+  -moz-transition: color .1s linear;
+  /* Firefox 4 */
+  -webkit-transition: color .1s linear;
+  /* Safari and Chrome */
+  -o-transition: color .1s linear;
+  /* Opera */
+}
+
+#sidebar-nav #dashboard-menu a i {
+  position: absolute;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  opacity: 0.5;
+  transition: opacity .1s ease;
+  -moz-transition: opacity .1s ease;
+  /* Firefox 4 */
+  -webkit-transition: opacity .1s ease;
+  /* Safari and Chrome */
+  -o-transition: opacity .1s ease;
+  /* Opera */
+}
+
+#sidebar-nav #dashboard-menu > li {
+  position: relative;
+  /* font awesome icon */
+}
+
+#sidebar-nav #dashboard-menu > li .icon-group {
+  font-size: 20px;
+}
+
+#sidebar-nav #dashboard-menu > li:hover i {
+  opacity: 1;
+}
+
+#sidebar-nav #dashboard-menu > li.active > a,
+#sidebar-nav #dashboard-menu > li > a:hover {
+  color: #33455a;
+  text-decoration: none;
+}
+
+#sidebar-nav #dashboard-menu > li.active a {
+  font-weight: 600;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+#sidebar-nav #dashboard-menu > li.active i {
+  opacity: 1;
+}
+
+#pad-wrapper {
+  padding: 0px 25px;
+  margin-top: 55px;
+}
+
+#pad-wrapper h4 {
+  margin: 0 0 0 20px;
+  color: #696d73;
+  font-style: italic;
+}
+
+.content {
+  min-width: 400px;
+  min-height: 600px;
+  margin-bottom: 100px;
+  padding-bottom: 50px;
+  position: relative;
+  background: #fff;
+  margin-left: 177px;
+  border-left: 1px solid #dae3e9;
+  border-bottom: 1px solid #dae3e9;
+  box-shadow: -2px 3px 4px 0px #f1f1f3;
+  border-radius: 0px 0px 0px 5px;
+}
+
+.content.wide-content {
+  margin-left: 0;
+  border-radius: 0;
+}
+
+.dropdown-menu .divider {
+  border-bottom: 1px solid #EEEEEE;
+  overflow: visible;
+}
+
+.form-actions {
+  .btn {
+    margin-right: 10px;
+  }
+}
+
+.table-striped tbody > tr:nth-child(2n+1) > td, .table-striped tbody > tr:nth-child(2n+1) > th {
+  background-color: #FFFFFF;
+}
+.table thead th {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.table-hover tbody tr:hover > td, .table-hover tbody tr:hover > th {
+  background-color: #F5FAFC !important;
+}
+
+.pagination li {
+  margin-left: 0;
+}
+.pagination ul > li:last-child > a, .pagination ul > li:last-child > span, .pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
+  color: #526273;
+  font-size: 12px;
+}
+.pagination ul > li.disabled a, .pagination ul > li.disabled a:hover {
+  color: #999999;
+}
+
+.error-block {
+  pre {
+    margin-bottom: 20px;
+  }
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none;
+}

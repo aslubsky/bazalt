@@ -1,0 +1,102 @@
+<script type="text/ng-template" id="errors-list">
+    <div class="page-header">
+        <h1>All errors list</h1>
+    </div>
+
+    <table ng-init="filter.active = true" ng-table="update" ng-cloak pager="errors.pager">
+        <tr ng-repeat="error in errors.data">
+            <td sortable="id"  title="#">{[error.id]}</td>
+            <td sortable="message" filter="{ 'message': 'text' }" title="Message">
+                <a href="/error/view/{[error.id]}">{[error.message]}</a>
+            </td>
+            <td sortable="host" filter="{ 'host': 'select' }" filter-data="hosts" title="Host">{[error.host]}</td>
+            <td filter="{ 'created': 'date' }" sortable="created" width="140" title="Date of creation" class="text-center">
+                {[error.created|date:'yyyy-MM-dd']}<br/>
+                {[error.created|date:'HH:mm:ss']}
+            </td>
+            <td filter="{ 'updated': 'date' }" sortable="updated" width="140" title="Updated date" class="text-center">
+                {[error.updated|date:'yyyy-MM-dd']}<br/>
+                {[error.updated|date:'HH:mm:ss']}
+            </td>
+            <td filter="{ 'action': 'button' }" width="95" title="Actions" class="text-center">
+                <div class="btn-group">
+                    <button ng-click="delete({[error.id]})" class="btn btn-danger"><span class="glyphicon glyphicon-trash glyphicon glyphicon-white"></span></button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script type="text/ng-template" id="errors-archive-list">
+    <div class="page-header">
+        <h1>Errors archive</h1>
+    </div>
+
+    <table ng-init="filter.active = true" ng-table="update" ng-cloak pager="errors.pager">
+        <tr ng-repeat="error in errors.data">
+            <td sortable="id"  title="#">{[error.id]}</td>
+            <td sortable="message" filter="{ 'message': 'text' }" title="Message">
+                <a href="/error/view/{[error.id]}">{[error.message]}</a>
+            </td>
+            <td sortable="host" filter="{ 'host': 'select' }" filter-data="hosts" title="Host">{[error.host]}</td>
+            <td filter="{ 'created': 'date' }" sortable="created" width="140" title="Date of creation" class="text-center">
+                {[error.created|date:'yyyy-MM-dd']}<br/>
+                {[error.created|date:'HH:mm:ss']}
+            </td>
+            <td filter="{ 'updated': 'date' }" sortable="updated" width="140" title="Updated date" class="text-center">
+                {[error.updated|date:'yyyy-MM-dd']}<br/>
+                {[error.updated|date:'HH:mm:ss']}
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script type="text/ng-template" id="hosts-list">
+    <div class="page-header">
+        <h1>Hosts</h1>
+    </div>
+
+    <table ng-init="filter.active = true" ng-cloak ng-table="update" pager="hosts.pager">
+        <tr ng-repeat="host in hosts.data">
+            <td sortable="id"  title="#">
+                {[host.id]}
+            </td>
+            <td sortable="host" filter="{ 'host': 'text' }" title="Host name">
+                {[host.host]}
+            </td>
+            <td filter="{ 'action': 'button' }" width="95" title="Actions" class="text-center">
+                <div class="btn-group">
+                    <button ng-click="delete(column)" class="btn btn-danger"><span class="glyphicon glyphicon-trash glyphicon glyphicon-white"></span></button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script type="text/ng-template" id="error-view">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li><a data-host-id="{[ error.host_id ]}" href="#">{[ error.host ]}</a> <span class="divider">/</span></li>
+        <li class="active">Error</li>
+    </ul>
+
+    <div ng-cloak class="">
+        <div class="page-header">
+            <h1>{[ error.message ]} <small>({[ error.code ]})</small></h1>
+            <h3>in {[ error.file ]}{% if error.url %}, by URL: {[ error.url ]}{% endif %}</h3>
+            <h6>added: {[ error.created|date:'yyyy-MM-dd HH:mm:ss' ]}, changed: {[ error.updated|date:'yyyy-MM-dd HH:mm:ss' ]}</h6>
+        </div>
+        <div class="error-block">
+            <h5>Trace</h5>
+            <pre>{[ error.trace ]}</pre>
+            {% if error.request %}
+                <h5>Request data</h5>
+                <pre>{[ error.request ]}</pre>
+            {% endif %}
+            {% if error.session %}
+                <h5>Session data</h5>
+                <pre>{[ error.session ]}</pre>
+            {% endif %}
+        </div>
+    </div>
+</script>
